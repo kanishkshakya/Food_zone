@@ -1,32 +1,34 @@
 import React from "react";
 import styled from "styled-components";
-import { BASE_URL, Button } from "../App";
+import { BASE_URL, Button, Container } from "../App";
 const SearchResult = ({ data }) => {
   return (
     <FoodcardContainer>
-      <Foodcards>
-        {data?.map(({ name, image, text, price }) => (
-          <Foodcard key={name}>
-            <div className="food_image">
-              <img src={BASE_URL + image} alt="" />
-            </div>
-            <div className="food_info">
-              <div className="info">
-                <h3>{name}</h3>
-                <p>{text}</p>
+      <Container>
+        <Foodcards>
+          {data?.map(({ name, image, text, price }) => (
+            <Foodcard key={name}>
+              <div className="food_image">
+                <img src={BASE_URL + image} alt="" />
               </div>
-              <Button>${price.toFixed(2)}</Button>
-            </div>
-          </Foodcard>
-        ))}
-      </Foodcards>
+              <div className="food_info">
+                <div className="info">
+                  <h3>{name}</h3>
+                  <p>{text}</p>
+                </div>
+                <Button>${price.toFixed(2)}</Button>
+              </div>
+            </Foodcard>
+          ))}
+        </Foodcards>
+      </Container>
     </FoodcardContainer>
   );
 };
 
 export default SearchResult;
 const FoodcardContainer = styled.section`
-  height: 73vh;
+  min-height: 73vh;
   background-image: url("./bg.png");
   background-size: cover;
 `;
